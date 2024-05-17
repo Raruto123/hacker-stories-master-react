@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+
+
+function greeting(title) {
+  return title;
+};
+//strings
+const string = "yo";
+
+//number
+const number = new Number;
+
+//boolean
+const boolean = new Boolean;
+
+//undefined
+
+//null
+
+
+//bigInt
+
+//symbol
+
+const myElement = React.createElement("h1", null, `Hello ${greeting("hey")}`);
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
-    <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {myElement}
+        <label>
+          test <input type="text"></input>
+        </label>
+        <h1>{string.length}</h1>
+        <h1>{number.toString()}</h1>
+        <h1>{console.log(boolean.valueOf())}</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
   )
 }
 
