@@ -51,25 +51,37 @@ function App() {
   return (
       <div>
         {myElement}
-        <label>
-          test <input type="text"></input>
-        </label>
+        <Search></Search>
         <h1>{string.length}</h1>
         <h1>{number.toString()}</h1>
         <h1>{console.log(boolean.valueOf())}</h1>
         <ul>
           {arrayLambda.map((lambda) => lambda + "coraman")}
         </ul>
-        <ul>
-          {list.map((item, index) => (
-          <div key={index}>
-            <li>{item.title}</li>
-            <a href="">{item.url}</a>
-            <p>{item.num_comments}</p>
-            <p>{item.points}</p>
-          </div>))}
-        </ul>
+        <List></List>
       </div>
+  )
+}
+
+function List() {
+  return(
+    <ul>
+    {list.map((item, index) => (
+    <div key={index}>
+      <li>{item.title}</li>
+      <a href="">{item.url}</a>
+      <p>{item.num_comments}</p>
+      <p>{item.points}</p>
+    </div>))}
+  </ul>
+  )
+}
+
+function Search() {
+  return (
+  <label>
+    Search <input type="text"></input>
+  </label>
   )
 }
 
