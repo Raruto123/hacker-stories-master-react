@@ -43,7 +43,7 @@ const list = [
   }, 
 ];
 
-function App() {
+const App = () => { 
 
   const arrayLambda = ["yes", "no", "or"];
   // const inutile = "React";
@@ -61,9 +61,9 @@ function App() {
         <List></List>
       </div>
   )
-}
+};
 
-function List() {
+const List = () => {
   return(
     <ul>
     {list.map((item, index) => (
@@ -75,14 +75,20 @@ function List() {
     </div>))}
   </ul>
   )
-}
+};
 
-function Search() {
+const Search = () => {
+
+  function handleChange(event) {
+    console.log(event);
+    console.log(event.target.value);
+  }
+
   return (
   <label>
-    Search <input type="text"></input>
+    Search <input type="text" onBlur={handleChange}></input>
   </label>
   )
-}
+};
 
 export default App
