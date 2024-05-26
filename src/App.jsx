@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function greeting(title) {
   return title;
 }
@@ -24,28 +23,29 @@ const boolean = new Boolean;
 
 const myElement = React.createElement("h1", null, `Hello ${greeting("hey")}`);
 
-const list = [
-  {
-    title: 'React',
-    url: 'https://reactjs.org/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  }, 
-  {
-    title: 'Redux',
-    url: 'https://redux.js.org/',
-    author: 'Dan Abramov, Andrew Clark',
-    num_comments: 2,
-    points: 5,
-    objectID: 1,
-  }, 
-];
+
 
 const App = () => { 
 
   const arrayLambda = ["yes", "no", "or"];
+  const stories = [
+    {
+      title: 'React',
+      url: 'https://reactjs.org/',
+      author: 'Jordan Walke',
+      num_comments: 3,
+      points: 4,
+      objectID: 0,
+    }, 
+    {
+      title: 'Redux',
+      url: 'https://redux.js.org/',
+      author: 'Dan Abramov, Andrew Clark',
+      num_comments: 2,
+      points: 5,
+      objectID: 1,
+    }, 
+  ];
   // const inutile = "React";
   
   return (
@@ -58,24 +58,37 @@ const App = () => {
         <ul>
           {arrayLambda.map((lambda) => lambda + "coraman")}
         </ul>
-        <List></List>
+        <List list={stories}></List>
       </div>
   )
 };
 
-const List = () => {
+const List = (props) => {
   return(
     <ul>
-    {list.map((item, index) => (
+    {props.list.map((item, index) => (
     <div key={index}>
-      <li>{item.title}</li>
-      <a href="">{item.url}</a>
-      <p>{item.num_comments}</p>
-      <p>{item.points}</p>
-    </div>))}
+      <Item item={item}></Item>
+    </div>
+    )
+    )
+    }
   </ul>
   )
-};
+}
+
+function Item(props) {
+
+  return(
+    <>
+    <li>{props.item.title}</li>
+    <a href="">{props.item.url}</a>
+    <p>{props.item.num_comments}</p>
+    <p>{props.item.points}</p>
+    </>
+  )
+}
+
 
 const Search = () => {
 
