@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function greeting(title) {
   return title;
@@ -46,18 +46,26 @@ const App = () => {
       objectID: 1,
     }, 
   ];
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  console.log(searchTerm);
   // const inutile = "React";
   
   return (
       <div>
         {myElement}
-        <Search></Search>
+        <Search onChange={handleChange}></Search>
         <h1>{string.length}</h1>
         <h1>{number.toString()}</h1>
         <h1>{console.log(boolean.valueOf())}</h1>
         <ul>
           {arrayLambda.map((lambda) => lambda + "coraman")}
         </ul>
+        {/* <List list={stories.filter((story) => story.title === searchTerm)}></List> */}
         <List list={stories}></List>
       </div>
   )
@@ -90,16 +98,11 @@ function Item(props) {
 }
 
 
-const Search = () => {
-
-  function handleChange(event) {
-    console.log(event);
-    console.log(event.target.value);
-  }
+const Search = (props) => {
 
   return (
   <label>
-    Search <input type="text" onBlur={handleChange}></input>
+    Search <input type="text" onChange={props.onChange}></input>
   </label>
   )
 };
