@@ -65,8 +65,9 @@ const App = () => {
         <ul>
           {arrayLambda.map((lambda) => lambda + "coraman")}
         </ul>
-        {/* <List list={stories.filter((story) => story.title === searchTerm)}></List> */}
-        <List list={stories}></List>
+        {/* <List list={stories.filter((story) => story.title.toLocaleLowerCase() === searchTerm)}></List> */}
+        <List list={stories.filter((story) => story.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))}></List>
+        {/* <List list={stories}></List> */}
       </div>
   )
 };
