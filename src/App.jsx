@@ -47,7 +47,7 @@ const App = () => {
     }, 
   ];
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("redux");
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -58,7 +58,7 @@ const App = () => {
   return (
       <div>
         {myElement}
-        <Search onChange={handleChange}></Search>
+        <Search onChange={handleChange} search={searchTerm}></Search>
         <h1>{string.length}</h1>
         <h1>{number.toString()}</h1>
         <h1>{console.log(boolean.valueOf())}</h1>
@@ -72,10 +72,10 @@ const App = () => {
   )
 };
 
-const List = (props) => {
+const List = ({list}) => {
   return(
     <ul>
-    {props.list.map((item, index) => (
+    {list.map((item, index) => (
     <div key={index}>
       <Item item={item}></Item>
     </div>
@@ -86,24 +86,26 @@ const List = (props) => {
   )
 }
 
-function Item(props) {
+function Item({item}) {
 
   return(
     <>
-    <li>{props.item.title}</li>
-    <a href="">{props.item.url}</a>
-    <p>{props.item.num_comments}</p>
-    <p>{props.item.points}</p>
+    <li>{item.title}</li>
+    <a href="">{item.url}</a>
+    <p>{item.num_comments}</p>
+    <p>{item.points}</p>
     </>
   )
 }
 
 
-const Search = (props) => {
+const Search = ({search, onChange}) => {
+  //le destructuring
+  //{search, onChange} = props qui permet props.search etc.
 
   return (
   <label>
-    Search <input type="text" onChange={props.onChange}></input>
+    Search <input type="text" onChange={onChange} value={search}></input>
   </label>
   )
 };
