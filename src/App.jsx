@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function greeting(title) {
   return title;
@@ -47,12 +47,28 @@ const App = () => {
     }, 
   ];
 
-  const [searchTerm, setSearchTerm] = useState("redux");
+  // const [searchTerm, setSearchTerm] = useState(localStorage.getItem("search")||"redux");
+  const useStorageState = (key, initialState) => {
+    const [searchTerm, setSearchTerm] = useState(
+      localStorage.getItem(key)||initialState);
+
+      useEffect(() => {
+        localStorage.setItem(key, searchTerm);
+      },[searchTerm, key]);
+
+    return [searchTerm, setSearchTerm]
+  };
+
+  const [searchTerm, setSearchTerm] = useStorageState("search", "React");
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
+
+    // localStorage.setItem("search", event.target.value);
   };
   console.log(searchTerm);
+
+
   // const inutile = "React";
   
   return (
