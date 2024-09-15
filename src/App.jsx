@@ -65,7 +65,7 @@ const App = () => {
     setSearchTerm(event.target.value);
 
     // localStorage.setItem("search", event.target.value);
-  };
+  }; 
   console.log(searchTerm);
 
 
